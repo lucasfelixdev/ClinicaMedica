@@ -1,6 +1,6 @@
-package medclinic.api.Dtos;
+package medclinic.api.models.medico;
 
-public enum Especialidade {
+public enum Especialidades {
     ORTOPEDIA,
     CARDIOLOGIA,
     GINECOLOGIA,
