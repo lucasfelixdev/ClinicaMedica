@@ -1,5 +1,6 @@
 package medclinic.api.controller;
 
+import jakarta.validation.Valid;
 import medclinic.api.models.medico.DadosCadastroMedico;
 import medclinic.api.models.medico.Medico;
 import medclinic.api.models.medico.MedicoRepository;
@@ -21,8 +22,7 @@ public class MedicoController {
     @Transactional          // Transação ativa com o banco de dados
     // RequestBody para puxar os dados Json do corpo da requisição.
     // Como parâmetro foi passado uma classe Record contendo todos os dados dos requisitos da classe Médico
-    public void cadastrar(@RequestBody DadosCadastroMedico dados){
+    public void cadastrar(@RequestBody @Valid DadosCadastroMedico dados){
         repository.save(new Medico(dados));
     }
-
 }
