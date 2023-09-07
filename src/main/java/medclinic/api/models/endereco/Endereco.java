@@ -20,6 +20,7 @@ public class Endereco {
     private String uf;
 
 
+    //Construtor passado por parm para classe médico - em seguida instanciada em controller
     public Endereco(DadosEndereco dados) {
         this.logradouro = dados.logradouro();
         this.bairro = dados.bairro();
