@@ -1,21 +1,25 @@
-package medclinic.api.models.endereco;
+package medclinic.api.models.EnderecoP;
+
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record DadosEndereco(
+// RECORD PARA RECEBER OS DADOS DO ENDERECO DO PACIENTE.
+public record DadosEnderecoPaciente(
         @NotBlank
         String logradouro,
+        String numero,
+        String complemento,
         @NotBlank
         String bairro,
-        @NotBlank
-        @Pattern(regexp = "\\d{8}")
-        String cep,
         @NotBlank
         String cidade,
         @NotBlank
         String uf,
         @NotBlank
-        String complemento,
-        String numero) {
+        @Pattern(regexp = "\\d{8}")
+        String cep
+){
+
 }
+

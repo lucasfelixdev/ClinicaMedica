@@ -1,6 +1,7 @@
 package medclinic.api.models.medico;
 
-public enum Especialidades {
+// ENUMERATE, ATRIBUTOS CONSTANTES DAS ESPECIALIDADES MÉDICO
+public enum Especialidade {
     ORTOPEDIA,
     CARDIOLOGIA,
     GINECOLOGIA,
