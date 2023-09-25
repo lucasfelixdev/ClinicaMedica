@@ -15,7 +15,8 @@ import medclinic.api.models.enderecoMedico.Endereco;
 @EqualsAndHashCode(of = "id")
 public class Medico {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
@@ -25,11 +26,15 @@ public class Medico {
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
 
-    @Embedded // Para que Endereço fique em uma classe separada, mas faça parte da mesma tabela de Médicos junto ao banco de dados.
+    @Embedded
+    // Para que Endereço fique em uma classe separada, mas faça parte da mesma tabela de Médicos junto ao banco de dados.
     private Endereco endereco;
+
+    private Boolean ativo;
 
 
     public Medico(DadosCadastroMedico dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.crm = dados.crm();
@@ -37,5 +42,16 @@ public class Medico {
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
 
+    }
+
+    public void atualizarinformacoes(AtualizaCadastroMedico dados) {
+        if (dados.nome() != null) {this.nome = dados.nome();}
+        if (dados.telefone() != null) {this.nome = dados.nome();}
+        if (dados.email() != null) {this.nome = dados.email();}
+        if (dados.endereco() != null) {this.endereco.atualizarinformacoes(dados.endereco());}
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

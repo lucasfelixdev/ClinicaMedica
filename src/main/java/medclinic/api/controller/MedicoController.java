@@ -1,6 +1,7 @@
 package medclinic.api.controller;
 
 import jakarta.validation.Valid;
+import medclinic.api.models.medico.AtualizaCadastroMedico;
 import medclinic.api.models.medico.DadosListagemMedico;
 import medclinic.api.models.medico.DadosCadastroMedico;
 import medclinic.api.models.medico.Medico;
@@ -32,7 +33,7 @@ public class MedicoController {
     @GetMapping
     // Default da paginação é = 10 sendo ordenado pelo nome.
     public Page<DadosListagemMedico> listarMedicos(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemMedico::new);
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
         // http://localhost:8080/medicos?sort=nome - Listando pro ordem crescente de nome
         // http://localhost:8080/medicos?sort=crm,desc - Por ordem decrescento
     }
@@ -42,6 +43,18 @@ public class MedicoController {
 //    @GetMapping
 //    public List<DadosListagemMedico> listarMedicos(){
 //       return repository.findAll().stream().map(DadosListagemMedico::new).toList();} // .stream()  permite operações de processamento de dados em uma coleção de forma mais flexível e funcional.
-//
-//
+
+    @PutMapping
+    @Transactional
+    public void atualizarMedico(@RequestBody @Valid AtualizaCadastroMedico dados){
+        var medico = repository.getReferenceById(dados.id());
+        medico.atualizarinformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void exclusaoMed(@PathVariable Long id){
+        var medico = repository.getReferenceById(id);
+        medico.excluir();
+    }
 }
