@@ -1,15 +1,16 @@
-package medclinic.api.models.enderecoMedico;
+package medclinic.api.models;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import medclinic.api.dto.DadosEndereco;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable // Para não criar uma tabela no banco de dados e criar um relacionamento, usando isso ele ficará em uma classe separada, mas ficara na mesma tabela
-public class Endereco {
+public class EnderecoMedico {
 
     private String logradouro;
     private String bairro;
@@ -21,7 +22,7 @@ public class Endereco {
 
 
     //Construtor passado por parm para classe médico - em seguida instanciada em controller
-    public Endereco(DadosEndereco dados) {
+    public EnderecoMedico(DadosEndereco dados) {
         this.logradouro = dados.logradouro();
         this.bairro = dados.bairro();
         this.cep = dados.cep();

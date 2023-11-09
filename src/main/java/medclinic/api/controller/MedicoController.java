@@ -1,11 +1,11 @@
 package medclinic.api.controller;
 
 import jakarta.validation.Valid;
-import medclinic.api.models.medico.AtualizaCadastroMedico;
-import medclinic.api.models.medico.DadosListagemMedico;
-import medclinic.api.models.medico.DadosCadastroMedico;
-import medclinic.api.models.medico.Medico;
-import medclinic.api.models.medico.MedicoRepository;
+import medclinic.api.dto.AtualizaCadastroMedico;
+import medclinic.api.dto.DadosListagemMedico;
+import medclinic.api.dto.DadosCadastroMedico;
+import medclinic.api.models.Medico;
+import medclinic.api.Repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,9 +38,9 @@ public class MedicoController {
         // http://localhost:8080/medicos?sort=crm,desc - Por ordem decrescento
     }
 
-
     // Retorno por listagem
 //    @GetMapping
+
 //    public List<DadosListagemMedico> listarMedicos(){
 //       return repository.findAll().stream().map(DadosListagemMedico::new).toList();} // .stream()  permite operações de processamento de dados em uma coleção de forma mais flexível e funcional.
 

@@ -1,5 +1,6 @@
-package medclinic.api.models.paciente;
+package medclinic.api.Repository;
 
+import medclinic.api.models.Paciente;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

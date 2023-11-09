@@ -1,7 +1,7 @@
-package medclinic.api.models.medico;
+package medclinic.api.dto;
 
 import jakarta.validation.constraints.NotNull;
-import medclinic.api.models.enderecoMedico.DadosEndereco;
+
 public record AtualizaCadastroMedico(
 
         @NotNull

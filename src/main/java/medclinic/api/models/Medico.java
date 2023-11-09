@@ -1,11 +1,13 @@
-package medclinic.api.models.medico;
+package medclinic.api.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import medclinic.api.models.enderecoMedico.Endereco;
+import medclinic.api.dto.AtualizaCadastroMedico;
+import medclinic.api.dto.DadosCadastroMedico;
+import medclinic.api.constants.Especialidade;
 
 @Table(name ="medicos")         // Nome da tabela no bcando de dados
 @Entity(name ="Medico")         // Nome da entidade
@@ -28,7 +30,7 @@ public class Medico {
 
     @Embedded
     // Para que Endereço fique em uma classe separada, mas faça parte da mesma tabela de Médicos junto ao banco de dados.
-    private Endereco endereco;
+    private EnderecoMedico enderecoMedico;
 
     private Boolean ativo;
 
@@ -40,7 +42,7 @@ public class Medico {
         this.crm = dados.crm();
         this.telefone = dados.telefone();
         this.especialidade = dados.especialidade();
-        this.endereco = new Endereco(dados.endereco());
+        this.enderecoMedico = new EnderecoMedico(dados.endereco());
 
     }
 
@@ -48,7 +50,7 @@ public class Medico {
         if (dados.nome() != null) {this.nome = dados.nome();}
         if (dados.telefone() != null) {this.nome = dados.nome();}
         if (dados.email() != null) {this.nome = dados.email();}
-        if (dados.endereco() != null) {this.endereco.atualizarinformacoes(dados.endereco());}
+        if (dados.endereco() != null) {this.enderecoMedico.atualizarinformacoes(dados.endereco());}
     }
 
     public void excluir() {

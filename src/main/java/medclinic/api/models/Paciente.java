@@ -1,11 +1,12 @@
-package medclinic.api.models.paciente;
+package medclinic.api.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import medclinic.api.models.EnderecoP.EnderecoPaciente;
+import medclinic.api.dto.AtualizaCadastroPaciente;
+import medclinic.api.dto.DadosCadastroPaciente;
 
 @Table(name="pacientes")
 @Entity(name="Paciente")

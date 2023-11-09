@@ -1,8 +1,11 @@
 package medclinic.api.controller;
 
 import jakarta.validation.Valid;
-import medclinic.api.models.medico.DadosListagemMedico;
-import medclinic.api.models.paciente.*;
+import medclinic.api.dto.AtualizaCadastroPaciente;
+import medclinic.api.dto.DadosCadastroPaciente;
+import medclinic.api.dto.dadosListagemPacientes;
+import medclinic.api.models.Paciente;
+import medclinic.api.Repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,13 +26,6 @@ public class PacienteController {
         repository.save(new Paciente(dados));
     }
 
-
-//    @PostMapping
-//    @Transactional
-//    public void cadastraPacienteSemDTO(@RequestBody @Valid String cep, String nome, String telefone, String complemento, String email, String uf, String logradouro, String endereco)
-//    {repository.save(new Paciente(cep,  nome,  telefone,  complemento,  email, uf,  logradouro, endereco));}
-
-
     @GetMapping
     public Page<dadosListagemPacientes> listarPacientes(@PageableDefault(size = 10, sort={"nome"})Pageable paginacao){
         return  repository.findAllByAtivoTrue(paginacao).map(dadosListagemPacientes::new);
@@ -40,6 +36,7 @@ public class PacienteController {
     public void atualizaPaciente(@RequestBody @Valid AtualizaCadastroPaciente dados){
         var paciente = repository.getReferenceById(dados.id());
         paciente.atualizainfos(dados);
+
     }
 
     @DeleteMapping("/{id}")

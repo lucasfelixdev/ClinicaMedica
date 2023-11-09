@@ -1,5 +1,6 @@
-package medclinic.api.models.medico;
-import medclinic.api.models.medico.Especialidade;
+package medclinic.api.dto;
+import medclinic.api.constants.Especialidade;
+import medclinic.api.models.Medico;
 
 // RECORD PARA LISTAR OS MÉDICOS
 public record DadosListagemMedico(Long id, String nome, String email, String crm, Especialidade especialidade) {

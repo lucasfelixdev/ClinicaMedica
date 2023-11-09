@@ -1,4 +1,4 @@
-package medclinic.api.models.medico;
+package medclinic.api.dto;
 
 
 import jakarta.validation.Valid;
@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import medclinic.api.models.enderecoMedico.DadosEndereco;
+import medclinic.api.constants.Especialidade;
 
 // 1- DTO - DATA TRANSFER OBJECT PARA RECEBER OS DADOS JSON DE MEDICOS.
 // 2- Atributo "Especialidades" são fixos então usamos o ENUM onde armazena as constantes, trabalhadas pela clínica.

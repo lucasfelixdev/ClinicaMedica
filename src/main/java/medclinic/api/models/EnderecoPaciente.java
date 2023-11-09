@@ -1,9 +1,10 @@
-package medclinic.api.models.EnderecoP;
+package medclinic.api.models;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import medclinic.api.dto.DadosEnderecoPaciente;
 
 
 @Getter

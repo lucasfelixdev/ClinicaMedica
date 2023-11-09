@@ -1,6 +1,6 @@
-package medclinic.api.models.medico;
+package medclinic.api.Repository;
 
-import io.micrometer.observation.ObservationFilter;
+import medclinic.api.models.Medico;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
