@@ -32,7 +32,7 @@ public class Medico {
     // Para que Endereço fique em uma classe separada, mas faça parte da mesma tabela de Médicos junto ao banco de dados.
     private EnderecoMedico enderecoMedico;
 
-    private Boolean ativo;
+    private Boolean ativo = true;
 
 
     public Medico(DadosCadastroMedico dados) {
@@ -48,8 +48,8 @@ public class Medico {
 
     public void atualizarinformacoes(AtualizaCadastroMedico dados) {
         if (dados.nome() != null) {this.nome = dados.nome();}
-        if (dados.telefone() != null) {this.nome = dados.nome();}
-        if (dados.email() != null) {this.nome = dados.email();}
+        if (dados.telefone() != null) {this.telefone = dados.telefone();}
+        if (dados.email() != null) {this.email = dados.email();}
         if (dados.endereco() != null) {this.enderecoMedico.atualizarinformacoes(dados.endereco());}
     }
 
