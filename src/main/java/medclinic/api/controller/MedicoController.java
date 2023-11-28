@@ -29,38 +29,47 @@ public class MedicoController {
     private MedicoRepository repository; // Instância da interface que contém os métodos JPA para acessar o
 
 
-
+    // REQUISIÇÕES POST
     @PostMapping
     @Transactional     // Transação ativa com o banco de dados
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriBuilder){
         var medico = new Medico(dados);
         repository.save(medico);
-
         var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
         return ResponseEntity.created(uri).body(new DadosDetalhadosMedico(medico));
     }
 
 
-    // Retorno por Paginação
+    // REQUISIÇÕES GET
+
+    // RETORNA LISTA POR PAGINAÇÃO
     @GetMapping
     // Default da paginação é = 10 sendo ordenado pelo nome.
     public ResponseEntity<Page<DadosListagemMedico>>listarMedicos(@PageableDefault(size = 11, sort = {"nome"}) Pageable paginacao){
         var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
-
-        // Retornar 204
         return ResponseEntity.ok(page);
     }
 
-    @PutMapping
-    @Transactional
-    public ResponseEntity atualizarMedico(@RequestBody @Valid AtualizaCadastroMedico dados){
-
-        var medico = repository.getReferenceById(dados.id());
-        medico.atualizarinformacoes(dados);
-
+    @GetMapping("/{id}") // Detalhar dados médico
+    public ResponseEntity detalharMed(@PathVariable Long id) {
+        var medico = repository.getReferenceById(id);
         return ResponseEntity.ok(new DadosDetalhadosMedico(medico));
     }
 
+
+    // REQUISIÇÕES PUT
+    @PutMapping
+    @Transactional
+    public ResponseEntity atualizarMedico(@RequestBody @Valid AtualizaCadastroMedico dados){
+        var medico = repository.getReferenceById(dados.id());
+
+
+        medico.atualizarinformacoes(dados);
+        return ResponseEntity.ok(new DadosDetalhadosMedico(medico));
+    }
+
+
+    // REQUISIÇÕES DELETE
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity exclusaoMed(@PathVariable Long id){
@@ -71,12 +80,4 @@ public class MedicoController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity detalhar(@PathVariable Long id){
-        var medico = repository.getReferenceById(id);
-        medico.excluir();
-
-        // Retornar 204
-        return ResponseEntity.ok(new DadosDetalhadosMedico(medico));
-    }
 }
