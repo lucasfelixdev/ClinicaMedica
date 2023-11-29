@@ -19,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController                     //  Indicar que a classe se trata de um controller API
 @RequestMapping("/medico")       // URL a qual esse controller irá responder (mapeamento)
 public class MedicoController {
