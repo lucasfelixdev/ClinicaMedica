@@ -1,24 +1,38 @@
-# webii-ecommerce
+# MEDICAL CLINIC API
 
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+
+### Rode seu front na porta 3000
 ```
-npm run serve
+npm run serve -- --port 3000
 ```
 
-### Compiles and minifies for production
+## Dados para entrar no app 
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+Login: lucasfelix@clinicalmedic.com
+Senha: 123456"
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Dados para cadastrar novo medico 
+seguir os campos abaixos para evitar problemas de validação. Caso, contrário os dados não serão enviados.
+```
+NOME: Alexandre Moraes sst2
+EMAIL": stfloffucura@voll.med
+CRM": 654322
+TELEFONE":36964587
+ESPECIALIDADE: ORTOPEDIA
+
+DADOS ENDEREÇO: 
+LOGRADOURO: Rua Sebastião
+BAIRRO: Planalto
+CEP: 56720000
+CIDADE: Patos
+UF: PB
+NUMERO": 67
+COMPLEMENTO: Casa branca
+```    
