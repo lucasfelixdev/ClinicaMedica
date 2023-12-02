@@ -6,6 +6,6 @@ public record AtualizaCadastroPaciente(
         @NotNull
         Long id,
         String nome,
-        String telfone,
+        String telefone,
         DadosEnderecoPaciente endereco) {
 }

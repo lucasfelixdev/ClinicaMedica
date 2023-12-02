@@ -10,9 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/login")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AutenticacaoController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class AutenticacaoController {
         var authentication = manager.authenticate(authenticationToken);
 
         var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
-
+        System.out.println("entrou?");
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }
 

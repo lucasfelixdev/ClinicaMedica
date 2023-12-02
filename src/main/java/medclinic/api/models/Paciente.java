@@ -26,10 +26,9 @@ public class Paciente {
 
     @Embedded
     private EnderecoPaciente endereco;
-    private Boolean ativo;
+    private Boolean ativo = true;
 
     public Paciente(DadosCadastroPaciente dados) {
-        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -38,7 +37,7 @@ public class Paciente {
 
     public void atualizainfos(AtualizaCadastroPaciente dados) {
         if (dados.nome() != null) {this.nome = dados.nome();}
-        if (dados.telfone() != null) {this.telefone = dados.telfone();}
+        if (dados.telefone() != null) {this.telefone = dados.telefone();}
         if (dados.endereco() != null) {this.endereco.atualizainfosendereco(dados.endereco());}}
 
     public void excluir() {this.ativo = false;}
